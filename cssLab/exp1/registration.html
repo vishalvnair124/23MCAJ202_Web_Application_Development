@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registration Form</title>
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="styles.css" />
+
+    <!-- Internal CSS -->
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+      }
+      .container {
+        width: 40%;
+        margin: auto;
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px gray;
+      }
+      h2 {
+        text-align: center;
+        color: #333;
+      }
+      label {
+        font-weight: bold;
+      }
+      input,
+      select,
+      textarea {
+        width: 100%;
+        padding: 8px;
+        margin: 5px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+      button {
+        width: 48%;
+        padding: 10px;
+        font-size: 16px;
+        margin-top: 10px;
+        cursor: pointer;
+        border: none;
+        border-radius: 5px;
+      }
+      .submit-btn {
+        background-color: green;
+        color: white;
+      }
+      .reset-btn {
+        background-color: red;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Registration Form</h2>
+      <form action="#" method="post">
+        <label>Full Name:</label>
+        <input type="text" placeholder="Enter your full name" required />
+
+        <label>Email:</label>
+        <input type="email" placeholder="Enter your email" required />
+
+        <label>Phone:</label>
+        <input type="tel" placeholder="Enter your phone number" required />
+
+        <label>Password:</label>
+        <input type="password" placeholder="Enter your password" required />
+
+        <label>Gender:</label>
+        <select>
+          <option>Male</option>
+          <option>Female</option>
+          <option>Other</option>
+        </select>
+
+        <label>Address:</label>
+        <textarea placeholder="Enter your address"></textarea>
+
+        <label>Profile Picture:</label>
+        <input type="file" />
+
+        <label>Favorite Color:</label>
+        <input type="color" />
+
+        <label>Subscribe to Newsletter:</label>
+        <input type="checkbox" />
+
+        <br />
+
+        <!-- Inline CSS applied here -->
+        <button type="reset" class="reset-btn" style="width: 48%">Reset</button>
+        <button type="submit" class="submit-btn" style="width: 48%">
+          Submit
+        </button>
+      </form>
+    </div>
+  </body>
+</html>

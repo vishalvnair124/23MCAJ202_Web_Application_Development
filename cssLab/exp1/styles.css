@@ -1,0 +1,14 @@
+/* External CSS file (styles.css) */
+input,
+select,
+textarea {
+    background-color: #f9f9f9;
+}
+
+button {
+    transition: 0.3s ease;
+}
+
+button:hover {
+    opacity: 0.8;
+}
