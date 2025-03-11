@@ -32,10 +32,12 @@ input:focus {
     border-color: rgb(130, 106, 251);
 }
 
+/* class container */
 .container {
     position: relative;
     max-width: 700px;
     width: 100%;
+    background-color: rgba(128, 128, 128, 0.44);
     /* background: rgba(255, 255, 255, 0.1); */
     box-shadow: 5.3px 10.6px 10.6px hsl(0deg 0% 0% / 0.34);
     /* box-shadow: 0 25px 45px rgba(0, 0, 0, 0.2); */
@@ -47,6 +49,9 @@ input:focus {
     border-radius: 8px;
 
 }
+
+
+/* input feilds */
 
 .container header {
     font-size: 1.5rem;
@@ -72,7 +77,7 @@ input:focus {
     width: 100%;
     padding: 10px 10px 10px 40px;
     /* Adjust padding to make space for the icon */
-    border: 1px solid #ccc;
+    border: 1.75px solid #8f6ede;
     border-radius: 5px;
 }
 
@@ -81,12 +86,14 @@ input:focus {
     left: 10px;
     top: 50%;
     transform: translateY(-50%);
-    color: #aaa;
+    /* color: #a; */
 }
 
 .input-box label {
     color: #333;
 }
+
+/* form  */
 
 .form :where(.input-box input, .select-box) {
     position: relative;
@@ -168,6 +175,8 @@ input:focus {
     background-position: right 10px center;
     background-size: 16px;
 }
+
+/* button */
 
 .form button {
     height: 50px;
