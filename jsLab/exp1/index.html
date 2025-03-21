@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registration Form</title>
+    <style>
+      /* Basic styling for the body to center the form and set background color */
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #e3f2fd;
+        margin: 0;
+      }
+
+      /* Styling for the form container */
+      .container {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+        width: 40%;
+        text-align: center;
+      }
+
+      /* Header styling */
+      h2 {
+        color: #1475e3;
+      }
+
+      /* Input group styling for spacing and alignment */
+      .input-group {
+        margin-bottom: 15px;
+        text-align: left;
+      }
+
+      /* Label styling */
+      label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+
+      /* Input field styling */
+      input {
+        width: 97%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+      }
+
+      /* Error message styling (hidden by default) */
+      .error {
+        color: red;
+        font-size: 14px;
+        display: none;
+      }
+
+      /* Button styling */
+      button {
+        background: #1475e3;
+        color: white;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 100%;
+        font-size: 16px;
+        margin-top: 10px;
+      }
+
+      /* Button hover effect */
+      button:hover {
+        background: #0e5bb8;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Register</h2>
+      <!-- Registration form with input fields and error messages -->
+      <form id="registrationForm">
+        <!-- Full Name input -->
+        <div class="input-group">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" placeholder="Enter your name" />
+          <span class="error" id="nameError"
+            >Enter a valid name (letters only)</span
+          >
+        </div>
+
+        <!-- Email input -->
+        <div class="input-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="Enter your email" />
+          <span class="error" id="emailError">Enter a valid email</span>
+        </div>
+
+        <!-- Phone Number input -->
+        <div class="input-group">
+          <label for="phone">Phone Number</label>
+          <input type="text" id="phone" placeholder="Enter your phone number" />
+          <span class="error" id="phoneError"
+            >Enter a valid 10-digit phone number</span
+          >
+        </div>
+
+        <!-- Date of Birth input -->
+        <div class="input-group">
+          <label for="dob">Date of Birth</label>
+          <input type="date" id="dob" />
+          <span class="error" id="dobError">Enter a valid date of birth</span>
+        </div>
+
+        <!-- Pin Code input -->
+        <div class="input-group">
+          <label for="pincode">Pin Code</label>
+          <input type="text" id="pincode" placeholder="Enter your pin code" />
+          <span class="error" id="pincodeError"
+            >Enter a valid 6-digit pin code</span
+          >
+        </div>
+
+        <!-- Address input -->
+        <div class="input-group">
+          <label for="address">Address</label>
+          <input type="text" id="address" placeholder="Enter your address" />
+          <span class="error" id="addressError">Address cannot be empty</span>
+        </div>
+
+        <!-- Submit button -->
+        <button type="button" onclick="validateForm()">Submit</button>
+      </form>
+    </div>
+
+    <script>
+      // Function to validate the form inputs
+      function validateForm() {
+        let isValid = true;
+
+        // Get input elements
+        let name = document.getElementById("name");
+        let email = document.getElementById("email");
+        let phone = document.getElementById("phone");
+        let dob = document.getElementById("dob");
+        let pincode = document.getElementById("pincode");
+        let address = document.getElementById("address");
+
+        // Get error message elements
+        let nameError = document.getElementById("nameError");
+        let emailError = document.getElementById("emailError");
+        let phoneError = document.getElementById("phoneError");
+        let dobError = document.getElementById("dobError");
+        let pincodeError = document.getElementById("pincodeError");
+        let addressError = document.getElementById("addressError");
+
+        // Name validation (only letters and spaces)
+        if (!/^[A-Z a-z \s]+$/.test(name.value.trim())) {
+          nameError.style.display = "block";
+          isValid = false;
+        } else {
+          nameError.style.display = "none";
+        }
+
+        // Email validation
+        if (!email.value.match(/^[^ ]+@[^ ]+\.[a-z]{2,3}$/)) {
+          emailError.style.display = "block";
+          isValid = false;
+        } else {
+          emailError.style.display = "none";
+        }
+
+        // Phone number validation (10 digits)
+        if (!phone.value.match(/^[1-9][\d]{9}$/)) {
+          phoneError.style.display = "block";
+          isValid = false;
+        } else {
+          phoneError.style.display = "none";
+        }
+
+        // Date of birth validation (cannot be empty)
+        if (dob.value.trim() === "") {
+          dobError.textContent = "Date of Birth is required";
+          dobError.style.display = "block";
+          isValid = false;
+        } else {
+          let dobDate = new Date(dob.value);
+          let today = new Date();
+
+          // Remove time part for accurate date comparison
+          today.setHours(0, 0, 0, 0);
+          dobDate.setHours(0, 0, 0, 0);
+
+          if (dobDate > today) {
+            dobError.textContent = "Date of Birth cannot be in the future";
+            dobError.style.display = "block";
+            isValid = false;
+          } else {
+            dobError.style.display = "none";
+          }
+        }
+
+        // Pin code validation (6 digits)
+        if (!pincode.value.match(/^\d{6}$/)) {
+          pincodeError.style.display = "block";
+          isValid = false;
+        } else {
+          pincodeError.style.display = "none";
+        }
+
+        // Address validation (cannot be empty)
+        if (address.value.trim() === "") {
+          addressError.style.display = "block";
+          isValid = false;
+        } else {
+          addressError.style.display = "none";
+        }
+
+        // If all validations pass, show success message
+        if (isValid) {
+          alert("Registration successful!");
+        }
+      }
+    </script>
+  </body>
+</html>

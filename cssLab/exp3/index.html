@@ -18,10 +18,16 @@
     <section class="container">
       <header>Registration Form</header>
       <form action="#" class="form">
+        <!-- form start  -->
         <div class="input-box">
           <label>Full Name</label>
           <i class="fa fa-user"></i>
-          <input type="text" placeholder="Enter full name" required />
+          <input
+            type="text"
+            placeholder="Enter full name"
+            pattern="[A-Za-z\s]{3,}"
+            required
+          />
         </div>
         <div class="input-box">
           <label>Email Address</label>
@@ -32,7 +38,12 @@
           <div class="input-box">
             <label>Phone Number</label>
             <i class="fa fa-phone"></i>
-            <input type="number" placeholder="Enter phone number" required />
+            <input
+              type="number"
+              placeholder="Enter phone number"
+              pattern="[0-9]{10}"
+              required
+            />
           </div>
           <div class="input-box">
             <label>Birth Date</label>
@@ -66,6 +77,7 @@
             required
           />
           <div class="column">
+            <!-- select -->
             <div class="select-box">
               <select>
                 <option>Country</option>
@@ -79,9 +91,15 @@
           </div>
           <div class="column">
             <input type="text" placeholder="Enter your state" required />
-            <input type="number" placeholder="Enter postal code" required />
+            <input
+              type="number"
+              placeholder="Enter postal code"
+              pattern="[0-9]{5,6}"
+              required
+            />
           </div>
         </div>
+        <!-- submit -->
         <button>Submit</button>
       </form>
     </section>

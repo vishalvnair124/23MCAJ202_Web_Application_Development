@@ -1,35 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Form</title>
+    <title>My form</title>
   </head>
   <body>
     <h2>Form</h2>
-    <!-- Form starts here -->
-    <form action="#" method="post">
-      <!-- Name input field -->
-      <label>Enter name:</label>
-      <input type="text" placeholder="Enter your name" required />
+    <form>
+      <!-- Input field for user's name -->
+      <label>Enter name :</label>
+      <input
+        type="text"
+        placeholder="Enter your name"
+        pattern="^[A-Za-z\s]+$"
+        required
+      />
       <br /><br />
 
-      <!-- Email input field -->
-      <label>Enter email:</label>
+      <!-- Input field for user's email with validation pattern -->
+      <label>Enter email :</label>
       <input type="email" placeholder="Enter your email" required />
       <br /><br />
 
-      <!-- Phone input field -->
-      <label>Enter phone:</label>
-      <input type="tel" placeholder="Enter your phone" required />
+      <!-- Input field for user's phone number with validation pattern -->
+      <label>Enter phone :</label>
+      <input
+        type="tel"
+        placeholder="Enter your phone"
+        pattern="[0-9]{10}"
+        required
+      />
       <br /><br />
 
-      <!-- Password input field -->
-      <label>Enter password:</label>
-      <input type="password" required />
+      <!-- Input field for user's password with strong password validation -->
+      <label>Enter password :</label>
+      <input type="password" placeholder="Enter password" required />
       <br /><br />
 
-      <!-- Qualification dropdown -->
+      <!-- Dropdown menu for selecting qualification -->
       <label>Select qualification:</label>
       <select>
         <option>High School</option>
@@ -38,42 +44,40 @@
       </select>
       <br /><br />
 
-      <!-- Gender radio buttons -->
+      <!-- Radio buttons for selecting gender -->
       <label>Select gender:</label>
-      <input type="radio" name="gender" value="male" /> Male
-      <input type="radio" name="gender" value="female" /> Female
-      <input type="radio" name="gender" value="other" /> Other <br /><br />
+      <input type="radio" name="gender" /> Male
+      <input type="radio" name="gender" /> Female
+      <input type="radio" name="gender" /> Other <br /><br />
 
-      <!-- Message textarea -->
+      <!-- Textarea for entering a message -->
       <label>Message:</label>
-      <br />
       <textarea placeholder="Enter your message"></textarea>
       <br /><br />
 
-      <!-- Date of birth input field -->
+      <!-- Input field for selecting date of birth -->
       <label>Date of birth:</label>
-      <input type="date" />
+      <input type="date" pattern="\d{4}-\d{2}-\d{2}" required />
       <br /><br />
 
-      <!-- File upload input field -->
+      <!-- File upload field for uploading a resume -->
       <label>Upload a resume:</label>
-      <input type="file" />
+      <input type="file" required />
       <br /><br />
 
-      <!-- Color picker input field -->
+      <!-- Color picker for selecting a favorite color -->
       <label>Choose your favorite color:</label>
-      <input type="color" value="#ff0000" />
+      <input type="color" required />
       <br /><br />
 
-      <!-- Newsletter subscription checkbox -->
+      <!-- Checkbox for subscribing to the newsletter -->
       <label>Subscribe to newsletter:</label>
-      <input type="checkbox" />
+      <input type="checkbox" required />
       <br /><br />
 
-      <!-- Form buttons -->
+      <!-- Buttons for resetting and submitting the form -->
       <button type="reset">Reset</button>
       <button type="submit">Submit</button>
     </form>
-    <!-- Form ends here -->
   </body>
 </html>

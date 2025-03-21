@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Champions Trophy 2025</title>
+    <style>
+      /* Styling for the body */
+      body {
+        display: flex;
+        flex-direction: column;
+        font-family: Arial, sans-serif;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        margin: 0;
+        background-color: #1475e3;
+      }
+
+      /* Container to hold all the boxes */
+      .container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        margin-top: 20px;
+      }
+
+      /* Styling for each box  */
+      .box {
+        width: 500px;
+        padding: 20px;
+        background-color: #ffffff;
+        border-radius: 15px;
+        box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s;
+        cursor: pointer;
+      }
+
+      /* Scale effect on hover */
+      .box:hover {
+        transform: scale(1.05);
+      }
+
+      /* Styling for  */
+      img {
+        width: 200px;
+        height: auto;
+        margin-top: 10px;
+      }
+
+      /* Styling for the text inside the boxes */
+      h2 {
+        font-size: 18px;
+        margin-top: 10px;
+      }
+
+      /* Additional margin */
+      .ct25 {
+        margin-top: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Main heading -->
+    <h1 class="ct25" style="color: white">Champions Trophy 2025</h1>
+
+    <!-- Container holding all the interactive boxes -->
+    <div class="container">
+      <!-- Box for the trophy -->
+      <div
+        class="box"
+        onmouseover="changeContent('trophy')"
+        onmouseout="resetContent('trophy')"
+      >
+        <img id="trophy-img" src="champions.png" alt="Trophy" />
+        <h2 id="trophy-text">Champions Trophy</h2>
+      </div>
+
+      <!-- Box for the man of the tournament -->
+      <div
+        class="box"
+        onmouseover="changeContent('mom')"
+        onmouseout="resetContent('mom')"
+      >
+        <img id="mom-img" src="mom.jpeg" alt="Man of the tournament" />
+        <h2 id="mom-text">Man of the tournament</h2>
+      </div>
+
+      <!-- Box for the highest wicket taker -->
+      <div
+        class="box"
+        onmouseover="changeContent('wickets')"
+        onmouseout="resetContent('wickets')"
+      >
+        <img id="wickets-img" src="ball.png" alt="Highest Wicket Taker" />
+        <h2 id="wickets-text">Highest Wicket Taker</h2>
+      </div>
+
+      <!-- Box for the leading run scorer -->
+      <div
+        class="box"
+        onmouseover="changeContent('runs')"
+        onmouseout="resetContent('runs')"
+      >
+        <img id="runs-img" src="bats.jpg" alt="Leading Run Scorer" />
+        <h2 id="runs-text">Leading Run Scorer</h2>
+      </div>
+    </div>
+    <div style="margin-top: 10px">
+      <h2 style="color: white">Champions Trophy 2025</h2>
+      <p style="color: white">All rights reserved</p>
+    </div>
+
+    <script>
+      /* Function to change content on mouseover */
+      function changeContent(type) {
+        if (type === "trophy") {
+          document.getElementById("trophy-text").innerText =
+            "The Ultimate Prize!";
+          document.getElementById("trophy-img").src = "trophy_hover.jpg";
+        } else if (type === "mom") {
+          document.getElementById("mom-text").innerText = "Best Performance!";
+          document.getElementById("mom-img").src = "rachin.jpg";
+        } else if (type === "wickets") {
+          document.getElementById("wickets-text").innerText =
+            "Unstoppable Bowler!";
+          document.getElementById("wickets-img").src = "mat.jpeg";
+        } else if (type === "runs") {
+          document.getElementById("runs-text").innerText = "Top Scorer!";
+          document.getElementById("runs-img").src = "rachin.jpg";
+        }
+      }
+
+      /* Function to reset content on mouseout */
+      function resetContent(type) {
+        if (type === "trophy") {
+          document.getElementById("trophy-text").innerText = "Champions Trophy";
+          document.getElementById("trophy-img").src = "champions.png";
+        } else if (type === "mom") {
+          document.getElementById("mom-text").innerText =
+            "Man of the tournament";
+          document.getElementById("mom-img").src = "mom.jpeg";
+        } else if (type === "wickets") {
+          document.getElementById("wickets-text").innerText =
+            "Highest Wicket Taker";
+          document.getElementById("wickets-img").src = "ball.png";
+        } else if (type === "runs") {
+          document.getElementById("runs-text").innerText = "Leading Run Scorer";
+          document.getElementById("runs-img").src = "bats.jpg";
+        }
+      }
+    </script>
+  </body>
+</html>

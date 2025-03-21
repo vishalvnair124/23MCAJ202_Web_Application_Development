@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Symmetric Matrix Checker</title>
+    <style>
+      /* Reset and global styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Arial", sans-serif;
+      }
+
+      /* Center the content */
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background: linear-gradient(135deg, #42a5f5, #1e88e5);
+      }
+
+      /* Styling for the container box */
+      .container {
+        background: white;
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+        text-align: center;
+        width: 90%;
+        max-width: 450px;
+      }
+
+      /* Styling h2 */
+      h2 {
+        margin-bottom: 15px;
+        color: #1e88e5;
+      }
+
+      /* Styling for forms */
+      form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      /* input fields */
+      input {
+        margin: 10px 0;
+        padding: 10px;
+        width: 100%;
+        border: 2px solid #1e88e5;
+        border-radius: 8px;
+        font-size: 16px;
+        text-align: center;
+        transition: 0.3s;
+      }
+
+      /* Focus effect for input fields */
+      input:focus {
+        outline: none;
+        border-color: #1565c0;
+        box-shadow: 0px 0px 8px rgba(21, 101, 192, 0.5);
+      }
+
+      /* submit button */
+      input[type="submit"] {
+        background: #1e88e5;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        border: none;
+        transition: 0.3s;
+      }
+
+      /* Hover submit button */
+      input[type="submit"]:hover {
+        background: #1565c0;
+      }
+
+      /* Grid container  */
+      .matrix-container {
+        display: grid;
+        gap: 8px;
+        margin-top: 15px;
+        justify-content: center;
+      }
+
+      /* individual matrix cells */
+      .matrix-cell {
+        width: 75px;
+        height: 50px;
+        border: 2px solid #1e88e5;
+        border-radius: 6px;
+        font-size: 16px;
+        text-align: center;
+        font-weight: bold;
+        transition: 0.3s;
+      }
+
+      /* Focus matrix cells */
+      .matrix-cell:focus {
+        outline: none;
+        border-color: #1565c0;
+      }
+
+      /* result message */
+      .result {
+        font-weight: bold;
+        margin-top: 15px;
+        font-size: 18px;
+        color: #fff;
+        padding: 10px;
+        border-radius: 8px;
+      }
+
+      /* message styling */
+      .success {
+        background: #43a047;
+      }
+
+      /* Error message */
+      .error {
+        background: #e53935;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Symmetric Matrix Checker</h2>
+
+      <!-- First form to get matrix size -->
+      <form onsubmit="return generateMatrixForm();">
+        <input
+          type="number"
+          id="numRC"
+          placeholder="Enter matrix size (e.g., 3)"
+          required
+          min="1"
+        />
+        <input type="submit" value="Generate Matrix" />
+      </form>
+
+      <!-- Second form to input matrix values -->
+      <form onsubmit="return checkSymmetric();">
+        <div id="matrixContainer" class="matrix-container"></div>
+        <input
+          type="submit"
+          value="Check Symmetry"
+          id="checkButton"
+          style="display: none"
+        />
+      </form>
+
+      <!-- Div to display the result -->
+      <div id="result" class="result"></div>
+    </div>
+
+    <script>
+      //Generates the input fields for the matrix based on the size entered by the user.
+
+      function generateMatrixForm() {
+        let size = parseInt(document.getElementById("numRC").value);
+
+        if (size < 1) {
+          alert("Please enter a valid number.");
+          return false;
+        }
+
+        let matrixContainer = document.getElementById("matrixContainer");
+        matrixContainer.innerHTML = ""; // Clear previous matrix
+        matrixContainer.style.gridTemplateColumns = `repeat(${size}, 75px)`;
+
+        // Create input fields for the matrix
+        for (let i = 0; i < size; i++) {
+          for (let j = 0; j < size; j++) {
+            let input = document.createElement("input");
+            input.type = "text";
+            input.classList.add("matrix-cell");
+            input.name = `cell-${i}-${j}`;
+            input.placeholder = `M[${i + 1}][${j + 1}]`;
+            matrixContainer.appendChild(input);
+          }
+        }
+
+        // Show submit button for symmetry check
+        document.getElementById("checkButton").style.display = "block";
+        return false;
+      }
+
+      //Checks if the entered matrix is symmetric.
+
+      function checkSymmetric() {
+        let size = parseInt(document.getElementById("numRC").value);
+        let matrix = [];
+
+        // Fetch matrix values
+        for (let i = 0; i < size; i++) {
+          matrix[i] = [];
+          for (let j = 0; j < size; j++) {
+            let value = document.querySelector(
+              `input[name="cell-${i}-${j}"]`
+            ).value;
+            matrix[i][j] = parseInt(value);
+          }
+        }
+
+        // Check symmetry (A[i][j] == A[j][i])
+        let isSymmetric = true;
+        for (let i = 0; i < size; i++) {
+          for (let j = 0; j < size; j++) {
+            if (matrix[i][j] !== matrix[j][i]) {
+              isSymmetric = false;
+              break;
+            }
+          }
+        }
+
+        let resultDiv = document.getElementById("result");
+        resultDiv.classList.remove("success", "error");
+
+        // Display result based on symmetry check
+        if (isSymmetric) {
+          resultDiv.innerHTML = "✅ The matrix is symmetric!";
+          resultDiv.classList.add("success");
+        } else {
+          resultDiv.innerHTML = "❌ The matrix is NOT symmetric.";
+          resultDiv.classList.add("error");
+        }
+
+        return false;
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Change Color</title>
+  </head>
+  <body>
+    <html>
+      <script>
+        //radom color generator
+        function getRandomColor() {
+          return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+        }
+
+        // Example: Apply random color to the background of the page
+
+        function myFun() {
+          // Get the input elements by their name
+          let ele = document.getElementsByName("color-type");
+
+          for (let i = 0; i < ele.length; i++) {
+            if (ele[i].checked) {
+              if (ele[i].value == "single-color") {
+                document.body.style.background = ""; // Reset background property
+                document.body.style.backgroundColor = getRandomColor();
+              } else {
+                const color1 = getRandomColor();
+                const color2 = getRandomColor();
+                const angle = Math.floor(Math.random() * 360); // Random angle between 0 and 360 degrees
+
+                // Set the background to a linear gradient
+                document.body.style.background = `linear-gradient(${angle}deg, ${color1}, ${color2})`;
+              }
+            }
+          }
+        }
+      </script>
+
+      <body>
+        <div class="center">
+          <div class="colmun">
+            <h1>Click the button to change color</h1>
+            <div class="radios">
+              <form>
+                <input
+                  type="radio"
+                  id="gradient-color"
+                  name="color-type"
+                  value="gradient-color"
+                />
+                <label for="gradient-color" class="radio-label"
+                  >gradient-color</label
+                >
+
+                <input
+                  type="radio"
+                  id="single-color"
+                  name="color-type"
+                  value="single-color"
+                  checked
+                />
+                <label for="single-color" class="radio-label"
+                  >single-color</label
+                >
+              </form>
+            </div>
+            <button class="button-85" onclick="myFun()">Click me</button>
+          </div>
+        </div>
+        <style>
+          /* CSS for button from getcssscan.com*/
+          .button-85 {
+            padding: 0.6em 2em;
+            border: none;
+            outline: none;
+            color: rgb(255, 255, 255);
+            background: #111;
+            cursor: pointer;
+            position: relative;
+            z-index: 0;
+            border-radius: 10px;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+          }
+
+          .button-85:before {
+            content: "";
+            background: linear-gradient(
+              45deg,
+              #ff0000,
+              #ff7300,
+              #fffb00,
+              #48ff00,
+              #00ffd5,
+              #002bff,
+              #7a00ff,
+              #ff00c8,
+              #ff0000
+            );
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            background-size: 400%;
+            z-index: -1;
+            filter: blur(5px);
+            -webkit-filter: blur(5px);
+            width: calc(100% + 4px);
+            height: calc(100% + 4px);
+            animation: glowing-button-85 20s linear infinite;
+            transition: opacity 0.3s ease-in-out;
+            border-radius: 10px;
+          }
+
+          /* glow animation */
+          @keyframes glowing-button-85 {
+            0% {
+              background-position: 0 0;
+            }
+            50% {
+              background-position: 400% 0;
+            }
+            100% {
+              background-position: 0 0;
+            }
+          }
+
+          .button-85:after {
+            z-index: -1;
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: #222;
+            left: 0;
+            top: 0;
+            border-radius: 10px;
+          }
+          /* buttton to center the button in the middle of the page */
+          .center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+          }
+          /* align in colmun */
+          .colmun {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+          }
+          /* radios */
+          .radios {
+            padding: 20px;
+          }
+
+          /* Hide the default radio button */
+          input[type="radio"] {
+            display: none;
+          }
+
+          /* Style for the label that will represent the radio button */
+          .radio-label {
+            display: inline-block;
+            margin-bottom: 5px;
+            margin-right: 10px;
+            padding: 5px 20px;
+            border: 2px solid #ddd;
+            border-radius: 15px;
+            cursor: pointer;
+          }
+
+          /* Style when the radio button is checked */
+          input[type="radio"]:checked + .radio-label {
+            border-color: #009688;
+            background-color: #009688;
+            color: white;
+          }
+        </style>
+      </body>
+    </html>
+  </body>
+</html>
