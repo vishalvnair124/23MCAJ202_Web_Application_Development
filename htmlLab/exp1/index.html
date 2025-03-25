@@ -1,26 +1,33 @@
 <html>
   <head>
+    <!-- Title of the webpage -->
     <title>My form</title>
   </head>
   <body>
+    <!-- Main heading for the form -->
     <h2>Form</h2>
     <form>
-      <!-- Input field for user's name -->
+      <!-- Input field for name -->
       <label>Enter name :</label>
       <input
         type="text"
         placeholder="Enter your name"
-        pattern="^[A-Za-z\s]+$"
+        pattern="^[A-Za-z ]+$"
         required
       />
       <br /><br />
 
-      <!-- Input field for user's email with validation pattern -->
+      <!-- Input field for email with validation pattern -->
       <label>Enter email :</label>
-      <input type="email" placeholder="Enter your email" required />
+      <input
+        type="email"
+        placeholder="Enter your email"
+        pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
+        required
+      />
       <br /><br />
 
-      <!-- Input field for user's phone number with validation pattern -->
+      <!-- Input field for phone number with validation pattern -->
       <label>Enter phone :</label>
       <input
         type="tel"
@@ -30,12 +37,17 @@
       />
       <br /><br />
 
-      <!-- Input field for user's password with strong password validation -->
+      <!-- Input field for password with validation pattern -->
       <label>Enter password :</label>
-      <input type="password" placeholder="Enter password" required />
+      <input
+        type="password"
+        placeholder="Enter password"
+        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%?&])[A-Za-z\d@$!%?&]{8,}"
+        required
+      />
       <br /><br />
 
-      <!-- Dropdown menu for selecting qualification -->
+      <!-- Dropdown for selecting qualification -->
       <label>Select qualification:</label>
       <select>
         <option>High School</option>
@@ -60,12 +72,12 @@
       <input type="date" pattern="\d{4}-\d{2}-\d{2}" required />
       <br /><br />
 
-      <!-- File upload field for uploading a resume -->
+      <!-- Input field for uploading a file -->
       <label>Upload a resume:</label>
       <input type="file" required />
       <br /><br />
 
-      <!-- Color picker for selecting a favorite color -->
+      <!-- Input field for selecting a color -->
       <label>Choose your favorite color:</label>
       <input type="color" required />
       <br /><br />
